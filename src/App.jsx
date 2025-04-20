@@ -7,12 +7,14 @@ import Product from './pages/Product'
 import Subscription from './pages/Subscription'
 import AboutUs from './pages/AboutUs'
 import Checkout from './pages/Checkout'
+import ScrollToTop from './components/ScrollToTop'
 
 
 function App() {
   return (
     <>
     <BrowserRouter>
+      <ScrollToTop/>
       <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
