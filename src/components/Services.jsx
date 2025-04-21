@@ -28,7 +28,7 @@ function Services() {
 
 
         <div className='relative '>
-            <img src={event} alt="event decor" className='brightness-70 w-full md:h-[720px] sm:h-[500px] h-full'/>
+            <img src={event} alt="event decor" className='brightness-70 w-full md:h-[720px] sm:h-[500px] h-[416px]'/>
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 sm:px-20 py-10 sm:py-20 w-full'>
                 <p className='font-[Gilroy] font-medium leading-[120%] uppercase text-[12px] sm:text-[14px] text-center text-white pb-6'>service</p>
                 <h3 className='text-white font-[Gilroy] font-semibold text-[34px] sm:text-[50px] leading-[120%] text-center pb-6'>Wedding & Event Decor</h3>

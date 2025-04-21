@@ -41,15 +41,16 @@ function SignIn({ onClose }) {
         </p>
 
         <div className="flex sm:flex-row flex-col gap-2 py-2">
-          <p className="border py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] uppercase">
-            <span className='inline-flex pr-2'><FcGoogle  size={24}/></span>
-          Continue with Google
+          <p className="flex items-center border py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] uppercase">
+            <span className='pr-2'><FcGoogle size={24} /></span>
+            Continue with Google
           </p>
-          <p className="border py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] uppercase">
-            <span className='inline-flex items-center pr-2'><FaApple  size={24}/></span>
-          Continue with Apple
+          <p className="flex items-center border py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] uppercase">
+            <span className='pr-2'><FaApple size={24} /></span>
+            Continue with Apple
           </p>
         </div>
+
       </div>
 
       <div className="flex gap-3 font-[Gilroy] font-medium text-[14px] items-center justify-center">
