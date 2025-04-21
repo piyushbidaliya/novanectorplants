@@ -39,21 +39,21 @@ const CardCarousel = () => {
 
   return (
     <div className="mt-4 w-full flex flex-col items-center">
-      <div className="w-full max-w-[1280px] relative">
+      <div className="w-full max-w-[1440px] relative">
         <div className="w-full">
           <div className="relative">
-            <p className=" text-center px-6 font-[Gilroy] text-normal text-[22px] leading-[120%]">{currentCard.description}</p>
-            <p className=" text-center px-6 font-[Gilroy] text-medium text-[14px] sm:text-[16px] leading-[100%]">{currentCard.client}</p>
+            <p className=" text-center px-0 sm:px-6 font-[Gilroy] text-normal text-[22px] leading-[120%]">{currentCard.description}</p>
+            <p className=" text-center px-0 sm:px-6 font-[Gilroy] text-medium text-[14px] sm:text-[16px] leading-[100%]">{currentCard.client}</p>
             {/* Prev Button */}
             <button
-              className="absolute top-1/2 -translate-y-1/2 left-0"
+              className="absolute top-1/2 -translate-y-1/2 left-0 sm:block hidden"
               onClick={handlePrev}
             >
               <TfiAngleLeft size={30} />
             </button>
             {/* Next Button */}
             <button
-              className="absolute top-1/2 -translate-y-1/2 right-0"
+              className="absolute top-1/2 -translate-y-1/2 right-0 sm:block hidden"
               onClick={handleNext}
             >
               <TfiAngleRight size={30}/>

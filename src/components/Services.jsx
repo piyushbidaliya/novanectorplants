@@ -37,8 +37,8 @@ function Services() {
             </div>
         </div>
 
-        <div className='p-10 border-b-1'>
-            <div className='p-4'>
+        <div className='px-4 py-10 sm:p-10 border-b-1'>
+            <div className='p-0 sm:p-4'>
                 <img src={logo} alt="google logo" className='w-fit mx-auto pb-2'/>
                 <p className='text-center font-[Gilroy] text-[12px] sm:text-[14px] leading-[120%] uppercase font-medium'>Reviews</p>
                 <h3 className='font-[Gilroy] font-semibold text-[34px] sm:text-[50px] leading-[120%] text-center'>Our Clients say</h3>
