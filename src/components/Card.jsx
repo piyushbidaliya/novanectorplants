@@ -8,7 +8,7 @@ function Card({title, img}) {
       <div className='flex-1 py-6 h-[200px] sm:h-[360px] flex flex-col justify-center items-center border-r'>
         <h1 className='font-[Gilroy] text-[26px] sm:text-[38px] leading-[120%] text-center px-6'>{title}</h1>
         <div className='py-4 w-full text-center'>
-          <Link to="/shop">
+          <Link to="/category">
             <p className='inline-block px-4 text-[14px] sm:text[16px] font-[Gilroy] font-semibold leading-[120%] tracking-[2.5%]'>Shop now <FaArrowRightLong className='inline-block' /></p>
           </Link>
         </div>

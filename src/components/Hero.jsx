@@ -1,10 +1,11 @@
 import hero from '../assets/hero.jpg'
 import Card from './Card'
 import OddCard from './OddCard'
-import flower from '../assets/flower.png'
-import dryflower from '../assets/freshflower.jpg'
+import dryflower from '../assets/flower.png'
+import flower from '../assets/freshflower.jpg'
 import live from '../assets/live.png'
 import aroma from '../assets/aroma.png'
+import freshners from '../assets/freshners.png'
 
 function Hero() {
   return (
@@ -44,14 +45,13 @@ function Hero() {
 
           {/* Second Row */}
           <div className='flex flex-col'>
-            <Card title="Live Plants" img={aroma} />
-            <OddCard title="Aroma Candles" img={live} />
+            <Card title="Live Plants" img={live} />
+            <OddCard title="Aroma Candles" img={aroma} />
           </div>
 
           {/* Third Row */}
           <div className='flex flex-col'>
-            <Card title="Live Plants" img={aroma} />
-            <OddCard title="Aroma Candles" img={live} />
+            <Card title="Fresheners" img={freshners} />
           </div>
         </div>
 
