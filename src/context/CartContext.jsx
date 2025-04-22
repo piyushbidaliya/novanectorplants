@@ -1,37 +1,43 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, {createContext, useState} from 'react'
+import all_products from '../assets/Product_Data'
 
-const CartContext = createContext();
+export const CartContext = createContext(null)
 
-export const useCart = () => {
-  return useContext(CartContext);
-};
+const getDefaultCart = ()=>{
+  let cart = {}
+  for (let index = 0; index < all_products.length+1; index++){
+      cart[index] = 0
+  }
+  return cart;
+}
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+const CartContextProvider = (props) => {
 
-  const addToCart = (product, quantity) => {
-    setCart(prevCart => {
-      const existingProduct = prevCart.find(item => item.id === product.id);
-      if (existingProduct) {
-        return prevCart.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      }
-      return [...prevCart, { ...product, quantity }];
-    });
+  const [cartItems, setCartItems] = useState(getDefaultCart())
+
+  const addToCart = (itemId) =>{
+    setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+    console.log(cartItems)
+  }
+
+  const removeFromCart = (itemId) =>{
+    setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+  }
+
+  const updateCartItemQuantity = (itemId, quantity) => {
+    setCartItems(prev => ({
+      ...prev,
+      [itemId]: quantity
+    }));
   };
+  
 
-  const removeFromCart = (id) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
-  };
-
-  const clearCart = () => setCart([]);
-
+  const contextValue = {all_products, cartItems, addToCart, removeFromCart, updateCartItemQuantity}
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
-      {children}
+    <CartContext.Provider value={contextValue}>
+      {props.children}
     </CartContext.Provider>
-  );
-};
+  )
+}
+
+export default CartContextProvider;

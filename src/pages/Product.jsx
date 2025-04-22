@@ -1,7 +1,6 @@
 import { FiPlus } from 'react-icons/fi'
-import product from '../assets/productflowers.jpg'
 import { GoDash } from 'react-icons/go'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import img from '../assets/glassvase.jpg'
 import img2 from '../assets/hammershoi.jpg'
 import img3 from '../assets/ceramicvase.jpg'
@@ -12,6 +11,9 @@ import liked from '../assets/rattan.png'
 import liked2 from '../assets/lime.png'
 import liked3 from '../assets/cedar.png'
 import liked4 from '../assets/ocean.png'
+import { CartContext } from '../context/CartContext'
+import { useParams } from 'react-router-dom'
+
 
 const Vase = [
   {
@@ -75,27 +77,38 @@ const SuggestedProducts = [
 ]
 
 function Product() {
-  const [counter, setCounter] = useState(1)
-
+  const { all_products, addToCart, updateCartItemQuantity, cartItems } = useContext(CartContext);
+  const {productId} = useParams()
+  const product = all_products.find((e)=> e.id === Number(productId))
+  const quantity = cartItems[product.id] || 0;
+  if (!product) {
+    return (
+      <div className="max-w-[1440px] mx-auto py-20 text-center text-red-600 text-xl">
+        Product not found.
+      </div>
+    )
+  }
 
   return (
     <main className='max-w-[1440px] mx-auto w-full '>
       <div className='flex md:flex-row flex-col border-b-1 border-r-1'>
         <div className='flex-1 max-h-[753px] w-full'>
-          <img src={product} alt="flowers" className='w-[720px] h-[420px] sm:h-[670px] md:h-[720px]'/>
+          <img src={product.image} alt="flowers" className='w-[720px] h-[420px] sm:h-[670px] md:h-[720px]'/>
         </div>
         
         <div className='flex-1 h-auto py-10'>
-          <p className='font-[Gilroy] font-medium text-[12px] sm:text-[14px] leading-[120%] uppercase pb-4 px-4 sm:px-10'>Fresh Flowers <span className=''>/ Rosy Delight</span></p>
+          <p className='font-[Gilroy] font-medium text-[12px] sm:text-[14px] leading-[120%] uppercase pb-4 px-4 sm:px-10'>{product.title} <span className=''>/ {product.name}</span></p>
           <div className='pb-4 px-4 sm:px-10'>
-            <h3 className='font-[Gilroy] font-medium text-[26px] sm:text-[38px] leading-[120%]'>Rosy Delight - $100</h3>
+            <h3 className='font-[Gilroy] font-medium text-[26px] sm:text-[38px] leading-[120%]'>{product.name} - ${product.price}</h3>
             <p className='font-[Gilroy] font-normal text-[14px] sm:text-[16px] leading-[140%]'>Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even</p>
           </div>
 
-          <p className='font-[Gilroy] font-medium text-[18px] leading-[140%] px-4 sm:px-10'>Quantity <span className='border-1 ml-2 inline-flex gap-2 items-center px-2'><GoDash
-           onClick={()=>setCounter(counter > 0 ? counter - 1 : counter)} className='border-r-1'/>
-           {counter}
-           <FiPlus onClick={()=>setCounter(counter + 1)} className='border-l-1'/></span></p>
+          <p className='font-[Gilroy] font-medium text-[18px] leading-[140%] px-4 sm:px-10'>Quantity <span className='border-1 ml-2 inline-flex gap-2 items-center px-2'>
+            <GoDash
+                  onClick={() => updateCartItemQuantity(product.id, Math.max(quantity - 1, 1))}
+                  className='border-r-1 cursor-pointer'/>
+           {quantity}
+           <FiPlus onClick={() => updateCartItemQuantity(product.id, quantity + 1)} className='border-l-1 cursor-pointer'/></span></p>
 
            <div className='max-w-[688px] h-[187px] py-4 px-4 sm:px-10'>
               <p className='font-[Gilroy] font-medium text-[18px] leading-[140%] pb-4'>Excellent Combination with:</p>
@@ -115,7 +128,7 @@ function Product() {
            <div className='font-[Gilroy] leading-[140%] pb-4 pt-10 px-4 sm:px-10'>
               <p className='text-[18px] font-medium'>Price options</p>
               <div className='font-normal text-[16px] pt-4'>
-                <input type="checkbox" className=''/> <label htmlFor="">One time purchase. Price $100</label>
+                <input type="checkbox" className=''/> <label htmlFor="">One time purchase. Price ${product.price}</label>
               </div>
 
               <div className='font-normal text-[16px] pt-2'>
@@ -124,7 +137,15 @@ function Product() {
            </div>
 
             <div className='px-4 sm:px-10'>
-              <button className='bg-black text-center uppercase w-full text-white py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] leading-[120%] tracking-[3%]'>Add to basket</button>
+              <button onClick={() => {
+                  if (quantity === 0) {
+                    addToCart(product.id);
+                  }
+                  alert("product added successfully")
+                }}
+              className='cursor-pointer bg-black hover:bg-gray-950 text-center uppercase w-full text-white py-4 px-6 font-[Gilroy] font-medium text-[14px] sm:text-[16px] leading-[120%] tracking-[3%]'>
+                Add to basket
+              </button>
            </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import img1 from '../assets/snowfall.png'
+import img1 from '../assets/freshflower.jpg'
 import img2 from '../assets/dawndelight.png'
 import img3 from '../assets/pinkelegance.png'
 import img4 from '../assets/rusticcharm.png'
@@ -15,6 +15,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Snowfall",
         price: 100,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -23,6 +24,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Dawn's Delight",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -31,6 +33,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Pink Elegance",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -39,6 +42,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Rustic Charm",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -47,6 +51,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Autumn Symphony",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -55,6 +60,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Rosy Delight",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -63,6 +69,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Serenity",
         price: 89,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -71,6 +78,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Blue Harmony",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -79,6 +87,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Mystical Majesty",
         price: 80,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
     {
@@ -87,6 +96,7 @@ let all_products = [
         title: "Fresh Flowers",
         name: "Blazing Blossoms",
         price: 70,
+        quantity: 1,
         description: "Large exceptional bouquet composed of a selection of David Austin roses, known for their beauty and subtle fragrance. The bouquet is accompanied by seasonal foliage which will enhance these sublime flowers even",
     },
 ]
