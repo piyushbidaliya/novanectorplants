@@ -86,29 +86,25 @@ function Header() {
 
       {/* Mobile Navbar (slide from left) */}
       <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            key="mobile-nav"
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ duration: 0.4 }}
-            className="fixed top-[40px] left-0 z-50 w-full sm:w-[50%] md:hidden h-full bg-white shadow-xl overflow-auto"
-          >
-            <Navbar
-              containerStyles="flex flex-col border-[#121212]"
-              onSignInClick={() => {
-                toggleSignIn();
-                toggleMenu(); // close menu when sign-in opens
-              }}
-              onCartClick={() => {
-                toggleCart();
-                toggleMenu(); // optional if you want to close mobile menu when cart opens
-              }}
-              showCart={showCart}
-            />
-          </motion.div>
-        )}
+      {menuOpen && (
+        <motion.div
+          key="mobile-nav"
+          initial={{ x: '-100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '-100%' }}
+          transition={{ duration: 0.4 }}
+          className="fixed top-[40px] left-0 z-50 w-full sm:w-[50%] md:hidden h-full bg-white shadow-xl overflow-auto"
+        >
+          <Navbar
+            containerStyles="flex flex-col border-[#121212]"
+            onSignInClick={toggleSignIn}
+            onCartClick={toggleCart}
+            showCart={showCart}
+            onLinkClick={() => setMenuOpen(false)} // closes mobile menu
+          />
+        </motion.div>
+      )}
+
       </AnimatePresence>
 
 
