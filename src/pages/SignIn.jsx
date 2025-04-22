@@ -1,9 +1,37 @@
-import React from 'react';
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import React, { useState } from 'react';
 import { FaApple } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { MdClose } from 'react-icons/md';
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import { auth } from '../firebase/setup.js'
 
 function SignIn({ onClose }) {
+  const [showOtp, setShowOtp] = useState(false)
+  const [phone, setPhone] = useState('')
+  const sendOtp = async () => {
+    try {
+      if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha', {
+          size: 'invisible',
+          callback: (response) => {
+            console.log('reCAPTCHA solved');
+          },
+        },);
+      }
+  
+      const appVerifier = window.recaptchaVerifier;
+  
+      const confirmation = await signInWithPhoneNumber(auth, phone, appVerifier);
+      console.log(confirmation);
+      setShowOtp(true);
+    } catch (error) {
+      console.error("OTP Error:", error.message);
+    }
+  };
+  
+  
   return (
     <div className="bg-white w-full max-w-[720px] max-h-[720px] px-4 py-10 sm:p-10 relative z-50 mx-auto">
       {/* Close button */}
@@ -23,12 +51,36 @@ function SignIn({ onClose }) {
           <p className="font-[Gilroy] font-medium text-[16px] leading-[120%] pb-2">
             Use your mobile number to sign up or log in
           </p>
-          <input type="text" placeholder="+380 XX XXX XX XX" className="p-4 border border-gray-300 w-full" />
+          <PhoneInput
+            country={'us'}
+            inputProps={{ className: 'w-full p-4 border border-gray-300 pl-10'}}
+            buttonStyle={{ className: 'p-4 bg-[#fff]'}}
+            //value={this.state.phone}
+            onChange={(phone) => setPhone("+" + phone)}
+          />
+        </div>
+        <div id="recaptcha"></div>
+
+
+        <div className={`pb-2 pt-4 ${
+             showOtp ? 'block' : 'hidden'
+        }`}>
+          <p className="font-[Gilroy] font-medium text-[16px] leading-[120%] pb-2">
+            Enter code from SMS
+          </p>
+          <input type='text' placeholder='xx xx xx' className='w-full p-4 border border-gray-300'/>
+          <p className='font-[Gilroy] font-medium text-[12px] leading-[120%] text-[#808080]'>Please check your phone for a message containing a code to enter</p>
         </div>
 
-        <button className="py-4 px-6 bg-black font-[Gilroy] font-medium text-[16px] uppercase text-white w-full mb-6">
+        <button className="py-4 px-6 bg-black font-[Gilroy] font-medium text-[16px] uppercase text-white w-full mb-6"
+                onClick={sendOtp}
+        >
           Continue
         </button>
+
+        <p className={`font-Gilroy font-medium text-[16px] leading-[120%] tracking-[2.5%] text-[#808080] ${
+          showOtp ? 'block' : 'hidden'
+          }`}>Didn't receive a code?<span className='text-[#121212]'>Resend code</span></p>
 
         <div className="flex items-center w-full my-4">
           <div className="flex-grow border-t border-gray-300"></div>

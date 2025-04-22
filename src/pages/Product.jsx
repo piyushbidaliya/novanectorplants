@@ -101,8 +101,8 @@ function Product() {
               <p className='font-[Gilroy] font-medium text-[18px] leading-[140%] pb-4'>Excellent Combination with:</p>
               <div className='flex items-center justify-evenly'>
               <FaAngleLeft className='relative bottom-8 'size={25}/>
-              {Vase.map((vase)=>(
-                <div className='w-[100px] h-[146px] px-4'>
+              {Vase.map((vase, index)=>(
+                <div className='w-[100px] h-[146px] px-4' key={index}>
                     <img src={vase.image} alt={vase.alt} className='border-1 border-[#D2D2D7] mb-1 w-[100px] h-[100px]'/>
                     <p className='font-[Gilroy] font-normal text-[14px] leading-[120%] mb-1'>{vase.name}</p>
                     <p className='font-[Gilroy] font-normal text-[14px] leading-[120%] text-[#808080] mb-1'>${vase.price}</p>
@@ -133,8 +133,8 @@ function Product() {
         <h1 className='font-[Gilroy] font-medium text-[26px] sm:text-[38px] leading-[120%] text-center'> You may also like…</h1>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 '>
-        {SuggestedProducts.map((liked)=>(
-        <div className='border-b-1 border-r-1 font-[Gilroy]'>
+        {SuggestedProducts.map((liked, index)=>(
+        <div className='border-b-1 border-r-1 font-[Gilroy]' key={index}>
           <img src={liked.image} alt={liked.alt} className='w-full h-[375px] object-cover' />
           <p className='font-medium text-[16px] leading-[120%] text-center'>{liked.name}</p>
           <p className='font-medium text-[120%] text-center text-[#808080] pb-4'>price {liked.price}$</p>

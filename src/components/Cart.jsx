@@ -54,6 +54,7 @@ function Cart({ onClose }) {
           Free standard shipping within Kyiv
         </p>
       </div>
+      <button className='uppercase text-white font-[Gilroy] font-medium text-[14px] leading-[100%] tracking-[2.5%] bg-black py-4 px-6 w-full'>Check Out</button>
     </div>
   );
 }
