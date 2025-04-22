@@ -22,7 +22,7 @@ function Cart({ onClose }) {
           <img src={flowers} alt="flower" className='max-w-[160px] max-h-[160px]' />
         </div>
 
-        <div className='flex justify-between w-full items-center'>
+        <div className='flex justify-between sm:flex-row flex-col w-full items-center'>
           <div className='font-[Gilroy] leading-[140%]'>
             <p className='font-medium text-[18px]'>Rosy Delight</p>
             <p className='font-normal text-[16px]'>Quantity (1)</p>
