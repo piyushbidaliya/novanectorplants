@@ -46,14 +46,14 @@ const CardCarousel = () => {
             <p className=" text-center px-0 sm:px-6 font-[Gilroy] text-medium text-[14px] sm:text-[16px] leading-[100%]">{currentCard.client}</p>
             {/* Prev Button */}
             <button
-              className="absolute top-1/2 -translate-y-1/2 left-0 sm:block hidden"
+              className="absolute top-1/2 -translate-y-1/2 left-0 sm:block hidden cursor-pointer"
               onClick={handlePrev}
             >
               <TfiAngleLeft size={30} />
             </button>
             {/* Next Button */}
             <button
-              className="absolute top-1/2 -translate-y-1/2 right-0 sm:block hidden"
+              className="absolute top-1/2 -translate-y-1/2 right-0 sm:block hidden cursor-pointer"
               onClick={handleNext}
             >
               <TfiAngleRight size={30}/>
